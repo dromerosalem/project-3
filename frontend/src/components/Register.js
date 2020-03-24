@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
 
@@ -32,7 +33,8 @@ class Register extends React.Component {
 
   render() {
     return <>
-      <h1>Register</h1>
+      <h1>Welcome to the game etc...</h1>
+      <h2>Register</h2>
       <form onSubmit={(event) => this.handleSubmit(event)}>
         <label>Email</label>
         <input onChange={(event) => this.handleChange(event)} type="text" name="email" />
@@ -43,8 +45,11 @@ class Register extends React.Component {
         <label>Confirm Password</label>
         <input
           onChange={(event) => this.handleChange(event)} type="password" name="passwordConfirmation" />
-        <button>Register</button>
+        <button>Login</button>
       </form>
+      <h2>Or if you already have an account,
+        <Link to={'/login'}>log in!</Link>
+      </h2>
     </>
   }
 }
