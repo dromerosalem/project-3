@@ -11,7 +11,6 @@ import Question from './components/Question'
 import Profile from './components/Profile'
 
 const App = () => (
-  
   <BrowserRouter>
     <Switch>
       <Route path="/register" component={Register} />
