@@ -31,7 +31,7 @@ class Profile extends React.Component {
   render(){
     return <>
     <h1>User Name: {this.state.data.username}</h1>
-    <h2>eMail Address: {this.state.data.emailemail}</h2>
+    <h2>eMail Address: {this.state.data.email}</h2>
     </>
   }
 
