@@ -19,23 +19,21 @@ class Profile extends React.Component {
     }
   }
 
-  // componentDidMount(){
-  //   axios.get('/Login',
-  //     this.state.data
-  //   )
-  //     .then(res => this.setState({ userDetails: res.data }))
-  //   console.log(this.userDetails)
-  // }
+  componentDidMount(){
+    axios.get('/api/usersmth?',
+      this.state.data
+    )
+      .then(res => this.setState({ userDetails: res.data }))
+    console.log(this.userDetails)
+  }
 
 
   render(){
     return <>
-    <h1>User Name: {this.data.username}</h1>
-    <h2>eMail Address: {this.data.email}</h2>
+    <h1>User Name: {this.state.data.username}</h1>
+    <h2>eMail Address: {this.state.data.email}</h2>
     </>
   }
-
 }
-
 
 export default Profile
