@@ -5,7 +5,7 @@ const router = require('./router')
 const mongoose = require('mongoose')
 mongoose.connect(
   'mongodb://localhost/trivia-db',
-  { userNewUrlParser: true, useInifiedTopology: true, useCreateIndex: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) console.log(err)
     else console.log('Mongoose connected')

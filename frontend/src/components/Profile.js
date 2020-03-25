@@ -20,7 +20,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
-    axios.get('/api/Login',
+    axios.get('/api/usersmth?',
       this.state.data
     )
       .then(res => this.setState({ userDetails: res.data }))
@@ -34,8 +34,6 @@ class Profile extends React.Component {
     <h2>eMail Address: {this.state.data.email}</h2>
     </>
   }
-
 }
-
 
 export default Profile
