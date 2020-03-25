@@ -10,7 +10,6 @@ import Quizzes from './components/Quizzes'
 import Profile from './components/Profile'
 
 const App = () => (
-  
   <BrowserRouter>
     <Switch>
       <Route path="/register" component={Register} />
