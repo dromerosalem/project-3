@@ -3,9 +3,15 @@ let mongooseHidden = require('mongoose-hidden')()
 const bcrypt = require('bcrypt')
 
 const schema = new mongoose.Schema({
+<<<<<<< HEAD
+  username: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true }
+=======
   username: { type: String, unique: true },
   email: { type: String, unique: true },
-  password: { type: String, unique: true }
+  password: { type: String, required: true, unique: true }
+>>>>>>> development
 })
 
 schema.plugin(require('mongoose-unique-validator'))
@@ -38,5 +44,5 @@ schema.methods.validatePassword = function validatePassword(password) {
 }
 
 
-module.export = mongoose.model('User', schema)
+module.exports = mongoose.model('User', schema)
 

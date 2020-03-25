@@ -1,7 +1,7 @@
 // Your backend starts here..
 const express = require('express')
 const bodyParser = require('body-parser')
-// const router = require('./router')
+const router = require('./router')
 const mongoose = require('mongoose')
 mongoose.connect(
   'mongodb://localhost/trivia-db',
@@ -21,6 +21,6 @@ expressServer.use((req, res, next) => {
   next()
 })
 
-// expressServer.use('/api', router )
+expressServer.use('/api', router)
 
 expressServer.listen(8000)
