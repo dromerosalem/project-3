@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const schema = new mongoose.Schema({
   username: { type: String, unique: true },
   email: { type: String, unique: true },
-  password: { type: String, unique: true }
+  password: { type: String, required: true, unique: true }
 })
 
 schema.plugin(require('mongoose-unique-validator'))
@@ -38,5 +38,5 @@ schema.methods.validatePassword = function validatePassword(password) {
 }
 
 
-module.export = mongoose.model('User', schema)
+module.exports = mongoose.model('User', schema)
 
