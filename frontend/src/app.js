@@ -9,9 +9,11 @@ import Register from './components/Register'
 import Quizzes from './components/Quizzes'
 import Question from './components/Question'
 import Profile from './components/Profile'
+import NavBar from './components/NavBar'
 
 const App = () => (
   <BrowserRouter>
+    <NavBar />
     <Switch>
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
