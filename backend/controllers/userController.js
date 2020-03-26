@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const { secret } = require('../config/enviroment')
+const { secret } = require('../config/environment')
 
 function register(req, res) {
   User
@@ -8,7 +8,6 @@ function register(req, res) {
     .then(user => {
       res.status(201).send(user)
     })
-    .catch(error => res.send(error))
 }
 
 function login(req, res) {
@@ -18,13 +17,40 @@ function login(req, res) {
       if (!user.validatePassword(req.body.password)){
         return res.status(401).send({ message: 'Unauthorized' })
       }
-      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '6h' } )
+      const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '48h' } )
       res.status(202).send({ message: `Welcome back ${user.username}`, token })
     })
-    .catch(error => res.send(error))
+}
+
+function getUserInfo(req, res) {
+  const id = req.params.id
+  User
+    .findById(id)
+    .then(userInfo => {
+      res.send(userInfo)
+    })
+}
+
+function editUserInfo(req, res) {
+  const currentUser = req.currentUser
+  const id = req.params.id
+  User
+    .findById(id)
+    .then(userInfo => {
+      if (!userInfo.user.equals(currentUser._id)) return res.status(401).send({ message: 'Unauthorized' })
+      return userInfo.set(req.body)
+    })
+    .then(userInfo => {
+      return userInfo.save()
+    })
+    .then(userInfo => {
+      res.status(202).send(userInfo)
+    })
 }
 
 module.exports = {
   register,
-  login
+  login,
+  getUserInfo,
+  editUserInfo
 }
