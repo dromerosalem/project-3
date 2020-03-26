@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('./models/user')
-const Score = require('./models/score')
-const Comment = require('./models/comment')
+// const Score = require('./models/score')
+// const Comment = require('./models/comment')
 
 const dbURI = 'mongodb://localhost/trivia-db'
 
