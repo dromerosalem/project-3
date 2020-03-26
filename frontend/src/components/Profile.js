@@ -20,7 +20,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount(){
-    axios.get('/api/usersmth?',
+    axios.get('/api/user/:id',
       this.state.data
     )
       .then(res => this.setState({ userDetails: res.data }))

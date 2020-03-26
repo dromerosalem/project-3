@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const { secret } = require('../config/enviroment')
+const { secret } = require('../config/environment')
 
 function register(req, res) {
   User
@@ -24,7 +24,17 @@ function login(req, res) {
     .catch(error => res.send(error))
 }
 
+function index (req, res) {
+  User
+    .find()
+    .then(users => {
+      res.send(users)
+    })
+}
+
+
 module.exports = {
   register,
-  login
+  login,
+  index
 }
