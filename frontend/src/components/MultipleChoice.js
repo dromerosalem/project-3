@@ -1,17 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 
-const randomIndex = Math.floor(Math.random() * 4)
-// console.log(randomIndex)
-
 Array.prototype.insert = function (index, item) {
   this.splice(index, 0, item)
 }
 
 let rightAnswers = 0
 let wrongAnswers = 0
+let totalAnswered = rightAnswers + wrongAnswers
 
-class Question extends React.Component {
+class MultipleChoice extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -27,29 +25,37 @@ class Question extends React.Component {
   }
 
   handlePlayerClick(event) {
+
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
+      totalAnswered = rightAnswers + wrongAnswers
     } else {
       event.target.style.backgroundColor = 'red'
       wrongAnswers++
+      totalAnswered = rightAnswers + wrongAnswers
     }
-    axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
-      .then(res => this.setState({ wholeQuestion: res.data }))
-    setTimeout(() => {
-      event.target.style.backgroundColor = 'white'
-    }, 400)
-    if (rightAnswers + wrongAnswers === 10) {
-      alert('Game finished!')
+    if (totalAnswered === 10) {
+      setTimeout(() => {
+        alert('Game finished!')
+        this.props.history.push('/display-score')
+      }, 400)
+    } else {
+      axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
+        .then(res => this.setState({ wholeQuestion: res.data }))
+      setTimeout(() => {
+        event.target.style.backgroundColor = 'white'
+      }, 400)
     }
   }
 
   render() {
-    // console.log(rightAnswers)
-    // console.log(wrongAnswers)
+    console.log(rightAnswers)
+    console.log(wrongAnswers)
+    console.log(totalAnswered)
+    const randomIndex = Math.floor(Math.random() * 4)
     const arrayOfAnswers = [this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[0])), this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[1])), this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[2]))]
     arrayOfAnswers.insert(randomIndex, this.state.wholeQuestion.results.map((e) => (e.correct_answer)))
-    // console.log(arrayOfAnswers)
     return <>
       <h2>Category: {this.state.wholeQuestion.results.map((e) => (e.category))}</h2>
       <div>Question: {this.state.wholeQuestion.results.map((e) => (e.question))}</div>
@@ -61,5 +67,4 @@ class Question extends React.Component {
   }
 }
 
-export default Question
-
+export default MultipleChoice
