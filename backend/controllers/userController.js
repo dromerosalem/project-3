@@ -22,7 +22,7 @@ function login(req, res) {
 }
 
 function getUserInfo(req, res) {
-  const id = req.params.id
+  const id = req.currentUser.
   User
     .findById(id)
     .then(userInfo => {
