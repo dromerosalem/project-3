@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 import NavBar from './components/NavBar'
 import TrueOrFlase from './components/TrueOrFalse'
 import DisplayScore from './components/DisplayScore'
+import Comments from './components/Comments'
 
 const App = () => (
   <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => (
       <Route excat path="/true-or-false" component={TrueOrFlase} />
       <Route exact path="/display-score" component={DisplayScore} />
       <Route exact path="/profile" component={Profile} />
+      <Route exact path='/comment' component={Comments} />
     </Switch>
   </BrowserRouter>
 )

@@ -16,20 +16,15 @@ class Profile extends React.Component {
     axios.get(`/api/user/${id}`)
       .then(res => this.setState({ userInfo: res.data }))
   }
-
+  
   render() {
     if (!this.state.userInfo) return null
     const { username, email } = this.state.userInfo
     return <div>
       <h2>Username: {username}</h2>
-      <p>{email}</p>
+      <p> Email: {email}</p>
     </div>
   }
 }
 
 export default Profile
-
-
-
-
-
