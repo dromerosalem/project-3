@@ -3,6 +3,7 @@ import axios from 'axios'
 import auth from '../lib/auth'
 
 class Profile extends React.Component {
+  
   constructor() {
     super()
     this.state = {
