@@ -1,15 +1,24 @@
 const mongoose = require('mongoose')
-const mongooseHidden = require('mongoose-hidden')()
 const bcrypt = require('bcrypt')
 
 const schema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true }
+},
+{
+  toJSON: {
+    transform(doc, json) {
+      return {
+        email: json.email,
+        username: json.username,
+        id: json._id
+      }
+    }
+  }
 })
 
 schema.plugin(require('mongoose-unique-validator'))
-schema.plugin(mongooseHidden)
 
 schema
   .virtual('passwordConfirmation')
