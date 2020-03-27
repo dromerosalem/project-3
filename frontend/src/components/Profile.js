@@ -17,7 +17,6 @@ class Profile extends React.Component {
       .then(res => this.setState({ userInfo: res.data }))
   }
 
-
   render() {
     if (!this.state.userInfo) return null
     const { username, email } = this.state.userInfo
