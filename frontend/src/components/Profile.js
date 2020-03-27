@@ -1,39 +1,34 @@
 import React from 'react'
 import axios from 'axios'
+import auth from '../lib/auth'
 
 class Profile extends React.Component {
-
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      data: {
-        email: null,
-        username: null,
-        totalQuizzes: null,
-        totalPercentage: null,
-        lastScore: null,
-        totalCorrectAnswers: null,
-        totalWrongAnswers: null
-        
-      }
+      userInfo: {}
     }
   }
 
-  componentDidMount(){
-    axios.get('/api/user/:id',
-      this.state.data
-    )
-      .then(res => this.setState({ userDetails: res.data }))
-    console.log(this.userDetails)
+  componentDidMount() {
+    const id = auth.getUserId()
+    axios.get(`/api/user/${id}`)
+      .then(res => this.setState({ userInfo: res.data }))
   }
 
-
-  render(){
-    return <>
-    <h1>User Name: {this.state.data.username}</h1>
-    <h2>eMail Address: {this.state.data.email}</h2>
-    </>
+  render() {
+    if (!this.state.userInfo) return null
+    const { username, email } = this.state.userInfo
+    return <div>
+      <h2>Username: {username}</h2>
+      <p>{email}</p>
+    </div>
   }
 }
 
 export default Profile
+
+
+
+
+
