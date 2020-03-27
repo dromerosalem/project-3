@@ -22,11 +22,11 @@ function login(req, res) {
 }
 
 function getUserInfo(req, res) {
-  const id = req.currentUser.
+  const id = req.params.id
   User
     .findById(id)
     .then(userInfo => {
-      res.send(userInfo._id)
+      res.send(userInfo)
     })
 }
 
@@ -55,6 +55,8 @@ function index (req, res) {
       res.send(users)
     })
 }
+
+
 
 
 module.exports = {
