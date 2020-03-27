@@ -2,12 +2,11 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 
-function register(req, res) {
+function register(req, res, next) {
   User
     .create(req.body)
-    .then(user => {
-      res.status(201).send(user)
-    })
+    .then(user => res.status(200).json({ message: `Hi ${user._id}! Let's change the way you do food..` })) // evaluate if welcome message set up correctly
+    .catch(next)
 }
 
 function login(req, res) {
@@ -23,16 +22,16 @@ function login(req, res) {
 }
 
 function getUserInfo(req, res) {
-  const id = req.params.id
+  const id = req.currentUser.
   User
     .findById(id)
     .then(userInfo => {
-      res.send(userInfo)
+      res.send(userInfo._id)
     })
 }
 
 function editUserInfo(req, res) {
-  const currentUser = req.currentUser
+  const currentUser = req.currentUser._id
   const id = req.params.id
   User
     .findById(id)
@@ -52,6 +51,7 @@ function index (req, res) {
   User
     .find()
     .then(users => {
+      console.log(users)
       res.send(users)
     })
 }
