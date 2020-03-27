@@ -22,7 +22,7 @@ class Profile extends React.Component {
     const { username, email } = this.state.userInfo
     return <div>
       <h2>Username: {username}</h2>
-      <p>{email}</p>
+      <p> Email: {email}</p>
     </div>
   }
 }
