@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import auth from '../lib/auth'
 
 class Login extends React.Component {
 
@@ -9,8 +10,7 @@ class Login extends React.Component {
       data: {
         email: '',
         password: ''
-      },
-      error: ''
+      }
     }
   }
 
@@ -22,9 +22,11 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    axios.post('/login',
+    axios.post('/api/login',
       this.state.data)
       .then(res => {
+        const token = res.data.token
+        auth.setToken(token)
         this.props.history.push('/quizzes')
       })
   }

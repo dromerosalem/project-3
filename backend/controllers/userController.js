@@ -26,7 +26,7 @@ function getUserInfo(req, res) {
   User
     .findById(id)
     .then(userInfo => {
-      res.send(userInfo._id)
+      res.send(userInfo)
     })
 }
 
@@ -55,6 +55,8 @@ function index (req, res) {
       res.send(users)
     })
 }
+
+
 
 
 module.exports = {
