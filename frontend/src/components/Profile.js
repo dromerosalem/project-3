@@ -3,7 +3,7 @@ import axios from 'axios'
 import auth from '../lib/auth'
 
 class Profile extends React.Component {
-  
+
   constructor() {
     super()
     this.state = {
@@ -15,8 +15,13 @@ class Profile extends React.Component {
     const id = auth.getUserId()
     axios.get(`/api/user/${id}`)
       .then(res => this.setState({ userInfo: res.data }))
+    const scoreId = this.props.match.params.id
+    axios.get(`/api/score/${scoreId}`)
+      .then((res) => {
+        this.setState({ scoreInfo: res.data })
+      })
   }
-  
+
   render() {
     if (!this.state.userInfo) return null
     const { username, email } = this.state.userInfo

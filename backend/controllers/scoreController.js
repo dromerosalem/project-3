@@ -8,12 +8,10 @@ function index(req, res) {
     })
 }
 
-
 function getScore(req, res) {
-  // const currentUser = req.currentUser
-  // req.body.user = currentUser
+  const id = req.params.id
   Score
-    .findById(req.params.id)
+    .findById(id)
     .then(score => {
       res.send(score)
     })

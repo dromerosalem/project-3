@@ -25,7 +25,7 @@ class MultipleChoice extends React.Component {
   }
 
   handlePlayerClick(event) {
-  
+
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
@@ -82,19 +82,19 @@ class MultipleChoice extends React.Component {
       <div>A.<button ref={button => {
         this.AnswerA = button
       }}
-        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
       <div>B.<button ref={button => {
         this.AnswerB = button
       }}
-        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
       <div>C.<button ref={button => {
         this.AnswerC = button
       }}
-        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[2]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[2]}</button></div>
       <div>D.<button ref={button => {
         this.AnswerD = button
       }}
-        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[3]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[3]}</button></div>
     </>
   }
 }
