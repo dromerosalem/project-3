@@ -24,8 +24,12 @@ router.route('/comments')
 router.route('/comments/:commentId')
   .delete(secureRoute, commentController.commentDelete)
 
+router.route('/scores')
+  .get(scoreController.index)
+  .post(scoreController.postToIndex)
+
 router.route('/score/:id')
-  .get(secureRoute, scoreController.getScore)
-  .put(secureRoute, scoreController.updateScore)
+  .get(scoreController.getScore)
+  .put(scoreController.updateScore)
 
 module.exports = router 

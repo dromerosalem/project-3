@@ -25,10 +25,11 @@ class MultipleChoice extends React.Component {
   }
 
   handlePlayerClick(event) {
-    
+
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
+      localStorage.setItem('score', rightAnswers)
       totalAnswered = rightAnswers + wrongAnswers
     } else {
       event.target.style.backgroundColor = 'red'
@@ -46,9 +47,13 @@ class MultipleChoice extends React.Component {
     }
 
     if (totalAnswered === 10) {
+      axios.put()
       setTimeout(() => {
         alert('Game finished!')
         this.props.history.push('/display-score')
+        rightAnswers = 0
+        wrongAnswers = 0
+        totalAnswered = 0
       }, 400)
     } else {
       axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
@@ -66,28 +71,30 @@ class MultipleChoice extends React.Component {
     console.log(rightAnswers)
     console.log(wrongAnswers)
     console.log(totalAnswered)
-    // console.log(typeof this.state.wholeQuestion.results.map((e) => (e.question))[0])
+    const { results } = this.state.wholeQuestion
     const randomIndex = Math.floor(Math.random() * 4)
-    const arrayOfAnswers = [this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[0])), this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[1])), this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[2]))]
-    arrayOfAnswers.insert(randomIndex, this.state.wholeQuestion.results.map((e) => (e.correct_answer)))
+    const arrayOfAnswers = [results.map((e) => (e.incorrect_answers[0])), results.map((e) => (e.incorrect_answers[1])), results.map((e) => (e.incorrect_answers[2]))]
+    arrayOfAnswers.insert(randomIndex, results.map((e) => (e.correct_answer)))
+    const question = results.map((e) => (e.question))[0]
+    console.log(typeof question)
     return <>
-      <h2>Category: {this.state.wholeQuestion.results.map((e) => (e.category))}</h2>
-      <div>Question: {this.state.wholeQuestion.results.map((e) => (e.question))}</div>
+      <h2>Category: {results.map((e) => (e.category))}</h2>
+      <div>Question: {question}</div>
       <div>A.<button ref={button => {
         this.AnswerA = button
-      }} 
+      }}
       onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
       <div>B.<button ref={button => {
         this.AnswerB = button
-      }} 
+      }}
       onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
       <div>C.<button ref={button => {
         this.AnswerC = button
-      }} 
+      }}
       onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[2]}</button></div>
       <div>D.<button ref={button => {
         this.AnswerD = button
-      }} 
+      }}
       onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[3]}</button></div>
     </>
   }

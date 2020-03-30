@@ -5,7 +5,7 @@ const { secret } = require('../config/environment')
 function register(req, res, next) {
   User
     .create(req.body)
-    .then(user => res.status(200).json({ message: `Hi ${user._id}! Let's change the way you do food..` })) // evaluate if welcome message set up correctly
+    .then(user => res.status(200).send(user)) 
     .catch(next)
 }
 

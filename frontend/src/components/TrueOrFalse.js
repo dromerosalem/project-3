@@ -29,6 +29,7 @@ class TrueOrFlase extends React.Component {
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
+      localStorage.setItem('score', rightAnswers)
       totalAnswered = rightAnswers + wrongAnswers
     } else {
       event.target.style.backgroundColor = 'red'

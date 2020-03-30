@@ -7,14 +7,18 @@ class Profile extends React.Component {
   constructor() {
     super()
     this.state = {
-      userInfo: {}
+      userInfo: {},
+      scoreInfo: {}
     }
   }
 
   componentDidMount() {
     const id = auth.getUserId()
+    const _id = 
     axios.get(`/api/user/${id}`)
       .then(res => this.setState({ userInfo: res.data }))
+    axios.get(`/api/score/${_id}`)
+      .then(res => this.setState({ scoreInfo: res.data }))
   }
   
   render() {
@@ -23,6 +27,7 @@ class Profile extends React.Component {
     return <div>
       <h2>Username: {username}</h2>
       <p> Email: {email}</p>
+      <p>Score: {this.state.scoreInfo.right}</p>
     </div>
   }
 }
