@@ -1,12 +1,28 @@
 const Score = require('../models/score')
 
-function addScore(req, res) {
-  const currentUser = req.currentUser 
-  const id = req.params.id
+function getScore(req, res) {
+  // const currentUser = req.currentUser
+  // req.body.user = currentUser
   Score
-    .findByIdAndUpdate(id)
+    .findById(req.params.id)
+    .then(score => {
+      res.send(score)
+    })
 }
 
-module.exports {
-  addScore
+function updateScore(req, res) {
+  const id = req.params.id
+  Score
+    .findById(id)
+    .then(score => {
+      return score.save()
+    })
+    .then(score => {
+      res.status(202).send(score)
+    })
+}
+
+module.exports = {
+  getScore,
+  updateScore
 }

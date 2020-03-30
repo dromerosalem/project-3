@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const userController = require('./controllers/userController')
 const commentController = require('./controllers/commentController')
+const scoreController = require('./controllers/scoreController')
 const secureRoute = require('./lib/secureRoute')
 
 router.route('/register')
@@ -21,4 +22,9 @@ router.route('/comments')
 
 router.route('/comments/:commentId')
   .delete(secureRoute, commentController.commentDelete)
+
+router.route('/score/:id')
+  .get(secureRoute, scoreController.getScore)
+  .put(secureRoute, scoreController.updateScore)
+
 module.exports = router 
