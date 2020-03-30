@@ -18,6 +18,7 @@ router.route('/user/:id')
 
 router.route('/comments')
   .post(secureRoute, commentController.commentCreate)
+  .get( commentController.allComments)
 
 router.route('/comments/:commentId')
   .delete(secureRoute, commentController.commentDelete)
