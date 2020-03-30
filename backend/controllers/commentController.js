@@ -3,6 +3,7 @@ const Comment = require('../models/comment')
 function allComments (req, res) {
   Comment
     .find()
+    .populate('user')
     .then(post => {
       res.send(post)
       
