@@ -1,5 +1,14 @@
 const Score = require('../models/score')
 
+function index(req, res) {
+  Score
+    .find()
+    .then(score => {
+      res.send(score)
+    })
+}
+
+
 function getScore(req, res) {
   // const currentUser = req.currentUser
   // req.body.user = currentUser
@@ -23,6 +32,7 @@ function updateScore(req, res) {
 }
 
 module.exports = {
+  index,
   getScore,
   updateScore
 }
