@@ -34,7 +34,13 @@ class TrueOrFlase extends React.Component {
       event.target.style.backgroundColor = 'red'
       wrongAnswers++
       totalAnswered = rightAnswers + wrongAnswers
+      if (this.AnswerA.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
+        this.AnswerA.style.backgroundColor = 'green'
+      } else if (this.AnswerB.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
+        this.AnswerB.style.backgroundColor = 'green'
+      }
     }
+    
     if (totalAnswered === 10) {
       setTimeout(() => {
         alert('Game finished!')
@@ -44,7 +50,8 @@ class TrueOrFlase extends React.Component {
       axios.get('https://opentdb.com/api.php?amount=1&type=boolean')
         .then(res => this.setState({ wholeQuestion: res.data }))
       setTimeout(() => {
-        event.target.style.backgroundColor = 'white'
+        this.AnswerA.style.backgroundColor = 'white'
+        this.AnswerB.style.backgroundColor = 'white'
       }, 400)
     }
   }
@@ -59,8 +66,14 @@ class TrueOrFlase extends React.Component {
     return <>
       <h2>Category: {this.state.wholeQuestion.results.map((e) => (e.category))}</h2>
       <div>Question: {this.state.wholeQuestion.results.map((e) => (e.question))}</div>
-      <div id="answera">A.<button onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
-      <div id="answerb">B.<button onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
+      <div>A.<button ref={button => {
+        this.AnswerA = button
+      }} 
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
+      <div>B.<button ref={button => {
+        this.AnswerB = button
+      }} 
+      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
     </>
   }
 }
