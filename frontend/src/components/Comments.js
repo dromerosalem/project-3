@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import NewComment from './NewComment'
 // import auth from '../lib/auth'
 
 class Comments extends React.Component {
@@ -7,37 +8,33 @@ class Comments extends React.Component {
   constructor() {
     super()
     this.state = {
-      commets: { 
-        userComments: '' 
-      },
-      nickName: {}
+      comments: []
+      
     }
   }  
 
-  // componentDidMount() {
-  //   const id = auth.getUserId()
-  //   axios.get(`/api/user/${id}`)
-  //     .then(res  => {
-  //       console.log(res.data)
-  //       this.setState({ nickName: res.data })
-  //     })
-      
-  // }
-
+  
   componentDidMount(){
-    axios.post('/api/comments')
+    axios.get('/api/comments')
       .then(res => {
-        this.setState({ nickName: res.data })
+        this.setState({ comments: res.data })
       })
   }
 
 
   render() {
-    console.log(this.state.nickName)
-    return <>
-    <h2>Hello there</h2>
+    console.log(this.state.comments)
     
-  
+    return <>
+    {this.state.comments.map((e, i) => {
+      console.log(e) 
+      return <div key={i}>
+        <h2>{e.user.username}</h2>
+        <p>{e.comment}</p>
+      </div>     
+    })}
+    
+    <NewComment/>
     </>
   }
 

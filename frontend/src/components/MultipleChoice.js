@@ -47,6 +47,7 @@ class MultipleChoice extends React.Component {
     }
 
     if (totalAnswered === 10) {
+      axios.put()
       setTimeout(() => {
         alert('Game finished!')
         this.props.history.push('/display-score')

@@ -8,14 +8,41 @@ function index(req, res) {
     })
 }
 
+function postToIndex(req, res) {
+  Score 
+    .create(req.body)
+    .then(score => {
+      res.status(201).send(score)
+    })
+}
+
 function getScore(req, res) {
-  const id = req.params.id
+  const currentUser = req.currentUser
+  req.body.user = currentUser
   Score
-    .findById(id)
+    .findById(currentUser.id)
     .then(score => {
       res.send(score)
     })
 }
+
+// function edit(req, res) {
+//   // Edit a pancake
+//   const currentUser = req.currentUser
+//   const id = req.params.id
+//   Pancake
+//     .findById(id)
+//     .then(pancake => {
+//       if (!pancake.user.equals(currentUser._id)) return res.status(401).send({ message: 'Unauthorized' })
+//       return pancake.set(req.body)
+//     })
+//     .then(pancake => {
+//       return pancake.save()
+//     })
+//     .then(pancake => {
+//       res.status(202).send(pancake)
+//     })
+// }
 
 function updateScore(req, res) {
   const id = req.params.id
@@ -31,6 +58,7 @@ function updateScore(req, res) {
 
 module.exports = {
   index,
+  postToIndex,
   getScore,
   updateScore
 }

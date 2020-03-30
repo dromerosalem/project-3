@@ -13,6 +13,11 @@ class Register extends React.Component {
         password: '',
         passwordConfirmation: ''
       },
+      score: {
+        gamesPlayed: 0,
+        right: 0,
+        wrong: 0
+      },
       errors: {}
     }
   }
@@ -21,14 +26,15 @@ class Register extends React.Component {
     const { name, value } = event.target
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
-    console.log(this.state.data)
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    axios.post('api/register',
+    axios.post('/api/register',
       this.state.data)
       .then(() => this.props.history.push('/login'))
+    axios.post('/api/scores',
+      this.state.score)
   }
 
   render() {

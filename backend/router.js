@@ -26,6 +26,7 @@ router.route('/comments/:commentId')
 
 router.route('/scores')
   .get(scoreController.index)
+  .post(scoreController.postToIndex)
 
 router.route('/score/:id')
   .get(scoreController.getScore)
