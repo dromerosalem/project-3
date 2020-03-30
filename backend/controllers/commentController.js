@@ -1,5 +1,14 @@
 const Comment = require('../models/comment')
 
+function allComments (req, res) {
+  Comment
+    .find()
+    .then(post => {
+      res.send(post)
+      
+    })
+}
+
 function commentCreate(req, res){
   req.body.user = req.currentUser
   Comment
@@ -16,7 +25,7 @@ function commentDelete(req, res) {
     .findById(req.params.commentId)
   
     .then(post => {
-      console.log(post)
+      
       if (!post) return res.status(401).send({ message: 'Unauthorized' })
       // const comment = post._id(req.params.commentId)
       // comment.remove()
@@ -26,7 +35,10 @@ function commentDelete(req, res) {
     .catch(err => console.log(err))
 }
 
+
+
 module.exports = {
   commentCreate,
-  commentDelete
+  commentDelete,
+  allComments
 }

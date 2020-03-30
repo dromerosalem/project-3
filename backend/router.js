@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const userController = require('./controllers/userController')
 const commentController = require('./controllers/commentController')
+const scoreController = require('./controllers/scoreController')
 const secureRoute = require('./lib/secureRoute')
 
 router.route('/register')
@@ -18,7 +19,13 @@ router.route('/user/:id')
 
 router.route('/comments')
   .post(secureRoute, commentController.commentCreate)
+  .get( commentController.allComments)
 
 router.route('/comments/:commentId')
   .delete(secureRoute, commentController.commentDelete)
+
+router.route('/score/:id')
+  .get(secureRoute, scoreController.getScore)
+  .put(secureRoute, scoreController.updateScore)
+
 module.exports = router 

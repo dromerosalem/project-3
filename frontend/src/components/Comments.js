@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import auth from '../lib/auth'
+// import auth from '../lib/auth'
 
 class Comments extends React.Component {
 
@@ -14,22 +14,28 @@ class Comments extends React.Component {
     }
   }  
 
-  componentDidMount() {
-    const id = auth.getUserId()
-    axios.get(`/api/user/${id}`)
-      .then(res  => {
-        console.log(res.data)
+  // componentDidMount() {
+  //   const id = auth.getUserId()
+  //   axios.get(`/api/user/${id}`)
+  //     .then(res  => {
+  //       console.log(res.data)
+  //       this.setState({ nickName: res.data })
+  //     })
+      
+  // }
+
+  componentDidMount(){
+    axios.post('/api/comments')
+      .then(res => {
         this.setState({ nickName: res.data })
       })
-      
   }
 
 
   render() {
-    if (!this.state.nickName) return null
-    const { username } = this.state.nickName
+    console.log(this.state.nickName)
     return <>
-    <h2>{username}</h2>
+    <h2>Hello there</h2>
     
   
     </>
