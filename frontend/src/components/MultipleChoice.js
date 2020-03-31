@@ -69,15 +69,11 @@ class MultipleChoice extends React.Component {
   }
 
   render() {
-    console.log(rightAnswers)
-    console.log(wrongAnswers)
-    console.log(totalAnswered)
     const { results } = this.state.wholeQuestion
     const randomIndex = Math.floor(Math.random() * 4)
     const arrayOfAnswers = [results.map((e) => (e.incorrect_answers[0])), results.map((e) => (e.incorrect_answers[1])), results.map((e) => (e.incorrect_answers[2]))]
     arrayOfAnswers.insert(randomIndex, results.map((e) => (e.correct_answer)))
     const question = results.map((e) => (e.question))[0]
-    console.log(typeof question)
     return <>
       <h2>Category: {results.map((e) => (e.category))}</h2>
       <div>Question: {question}</div>

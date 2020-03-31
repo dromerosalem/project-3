@@ -13,7 +13,7 @@ import NavBar from './components/NavBar'
 import TrueOrFlase from './components/TrueOrFalse'
 import DisplayScore from './components/DisplayScore'
 import Comments from './components/Comments'
-import FirstLogin from './components/FirstLogin'
+import LeaderBoard from './components/LeaderBoard'
 
 const App = () => (
   <BrowserRouter>
@@ -21,13 +21,13 @@ const App = () => (
     <Switch>
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
-      <Route path="/first-login" component={FirstLogin} />
       <Route exact path="/quizzes" component={Quizzes} />
       <Route exact path="/multiple-choice" component={MultipleChoice} />
       <Route excat path="/true-or-false" component={TrueOrFlase} />
       <Route exact path="/display-score" component={DisplayScore} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path='/comment' component={Comments} />
+      <Route exact path='/leader-board' component={LeaderBoard} />
     </Switch>
   </BrowserRouter>
 )

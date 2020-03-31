@@ -29,11 +29,12 @@ class TrueOrFlase extends React.Component {
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
-      localStorage.setItem('score', rightAnswers)
+      localStorage.setItem('right', rightAnswers)
       totalAnswered = rightAnswers + wrongAnswers
     } else {
       event.target.style.backgroundColor = 'red'
       wrongAnswers++
+      localStorage.setItem('wrong', wrongAnswers)
       totalAnswered = rightAnswers + wrongAnswers
       if (this.AnswerA.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
         this.AnswerA.style.backgroundColor = 'green'
@@ -58,9 +59,6 @@ class TrueOrFlase extends React.Component {
   }
 
   render() {
-    console.log(rightAnswers)
-    console.log(wrongAnswers)
-    console.log(totalAnswered)
     const randomIndex = Math.floor(Math.random() * 2)
     const arrayOfAnswers = [this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[0]))]
     arrayOfAnswers.insert(randomIndex, this.state.wholeQuestion.results.map((e) => (e.correct_answer)))

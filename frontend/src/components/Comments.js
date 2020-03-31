@@ -15,15 +15,12 @@ const CommentForm = ( { handleSubmit, handleChange } ) => {
   
 }
 
-
 class NewComment extends React.Component{
 
   constructor(){
     super()
     this.state = { 
-      
       comment: ''
-      
     }
   }
   handleChange(event) {
@@ -78,7 +75,6 @@ class Comments extends React.Component {
     return auth.getUserId() === comment.user.id
   }
 
-
   render() {
     console.log(this.state.comments)
     
@@ -101,11 +97,8 @@ class Comments extends React.Component {
         </div>     
       })}
     </div>
-    
-    
     </>
   }
-
 }
 
 export default Comments

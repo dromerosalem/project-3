@@ -1,9 +1,9 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
-// const Score = require('../models/score')
 
 function register(req, res, next) {
+  console.log(req.body)
   User
     .create(req.body)
     .then(user => res.status(200).send(user)) 
@@ -22,6 +22,14 @@ function login(req, res) {
     })
 }
 
+function index (req, res) {
+  User
+    .find()
+    .then(users => {
+      res.send(users)
+    })
+}
+
 function getUserInfo(req, res) {
   const id = req.params.id
   User
@@ -31,39 +39,47 @@ function getUserInfo(req, res) {
     })
 }
 
-function editUserInfo(req, res) {
-  const currentUser = req.currentUser._id
-  const id = req.params.id
+// function editUserInfo(req, res) {
+//   const currentUser = req.currentUser._id
+//   const id = req.params.id
+//   User
+//     .findById(id)
+//     .then(userInfo => {
+//       if (!userInfo.user.equals(currentUser._id)) return res.status(401).send({ message: 'Unauthorized' })
+//       return userInfo.set(req.body)
+//     })
+//     .then(userInfo => {
+//       return userInfo.save()
+//     })
+//     .then(userInfo => {
+//       res.status(202).send(userInfo)
+//     })
+// }
+
+function addToScore(req, res) {
+  const currentUser = req.currentUser.id
   User
-    .findById(id)
-    .then(userInfo => {
-      if (!userInfo.user.equals(currentUser._id)) return res.status(401).send({ message: 'Unauthorized' })
-      return userInfo.set(req.body)
+    .findById(currentUser)
+    .then(user => {
+      const userRight = user.score.right + req.body.score.right
+      const userWrong = user.score.wrong + req.body.score.wrong
+      req.body.score.right = userRight 
+      req.body.score.wrong = userWrong 
+      return user.set(req.body)
     })
-    .then(userInfo => {
-      return userInfo.save()
+    .then(user => {
+      return user.save()
     })
-    .then(userInfo => {
-      res.status(202).send(userInfo)
+    .then(user => {
+      res.status(202).send(user)
     })
 }
-
-function index (req, res) {
-  User
-    .find()
-    .then(users => {
-      console.log(users)
-      res.send(users)
-    })
-}
-
-
-
 
 module.exports = {
   register,
   login,
   index,
   getUserInfo,
-  editUserInfo
+  // editUserInfo,
+  addToScore
 }

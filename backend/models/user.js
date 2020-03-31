@@ -1,10 +1,16 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
+const scoreSchema = new mongoose.Schema({
+  right: { type: Number },
+  wrong: { type: Number }
+})
+
 const schema = new mongoose.Schema({
   username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  score: scoreSchema
 },
 {
   toJSON: {
@@ -12,7 +18,8 @@ const schema = new mongoose.Schema({
       return {
         email: json.email,
         username: json.username,
-        id: json._id
+        id: json._id,
+        score: json.score
       }
     }
   }
@@ -45,7 +52,6 @@ schema
 schema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password)
 }
-
 
 module.exports = mongoose.model('User', schema)
 

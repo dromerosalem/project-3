@@ -7,27 +7,27 @@ class Profile extends React.Component {
   constructor() {
     super()
     this.state = {
-      userInfo: {},
-      scoreInfo: {}
+      user: {
+        score: {}
+      }
     }
   }
 
   componentDidMount() {
     const id = auth.getUserId()
-    // const _id = this.state.scoreInfo.user._id
     axios.get(`/api/user/${id}`)
-      .then(res => this.setState({ userInfo: res.data }))
-    // axios.get(`/api/score/${_id}`)
-    //   .then(res => this.setState({ scoreInfo: res.data }))
+      .then(res => this.setState({ user: res.data }))
   }
 
   render() {
-    if (!this.state.userInfo) return null
-    const { username, email } = this.state.userInfo
+    if (!this.state.user) return null
+    const { username, score } = this.state.user
+    const percentage = score.right / (score.right + score.wrong) * 100
     return <div>
       <h2>Username: {username}</h2>
-      <p> Email: {email}</p>
-      <p>Score: {this.state.scoreInfo.right}</p>
+      <p>Right answers: {score.right}</p>
+      <p>Wrong answers: {score.wrong}</p>
+      <p>Percentage: {percentage}%</p>
     </div>
   }
 }

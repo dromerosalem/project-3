@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 const User = require('./models/user')
-// const Score = require('./models/score')
-// const Comment = require('./models/comment')
 
 const dbURI = 'mongodb://localhost/trivia-db'
 
@@ -20,25 +18,41 @@ mongoose.connect(
             username: 'Alex',
             email: 'alex@alex.com',
             password: 'alex',
-            passwordConfirmation: 'alex'
+            passwordConfirmation: 'alex',
+            score: {
+              right: 0,
+              wrong: 0
+            }
           },
           {
             username: 'Fortuny',
             email: 'fortuny@fortuny.com',
             password: 'fortuny',
-            passwordConfirmation: 'fortuny'
+            passwordConfirmation: 'fortuny',
+            score: {
+              right: 0,
+              wrong: 0
+            }
           },
           {
             username: 'Yara',
             email: 'yara@yara.com',
             password: 'yara',
-            passwordConfirmation: 'yara'
+            passwordConfirmation: 'yara',
+            score: {
+              right: 0,
+              wrong: 0
+            }
           },
           {
             username: 'David',
             email: 'david@david.com',
             password: 'david',
-            passwordConfirmation: 'david'
+            passwordConfirmation: 'david',
+            score: {
+              right: 0,
+              wrong: 0
+            }
           }
         ])
       })
