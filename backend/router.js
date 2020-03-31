@@ -19,17 +19,17 @@ router.route('/user/:id')
 
 router.route('/comments')
   .post(secureRoute, commentController.commentCreate)
-  .get( commentController.allComments)
+  .get(commentController.allComments)
 
 router.route('/comments/:commentId')
   .delete(secureRoute, commentController.commentDelete)
 
 router.route('/scores')
-  .get(scoreController.index)
-  .post(scoreController.postToIndex)
+  .get(secureRoute, scoreController.index)
+  .post(secureRoute, scoreController.postToIndex)
 
 router.route('/score/:id')
-  .get(scoreController.getScore)
-  .put(scoreController.updateScore)
+  .get(secureRoute, scoreController.getScore)
+  .put(secureRoute, scoreController.updateScore)
 
 module.exports = router 

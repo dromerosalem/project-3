@@ -17,6 +17,11 @@ function getUserId() {
   return JSON.parse(atob(parts[1])).sub
 }
 
+// function getUserScore() {
+//   const userId = getUserId()
+
+// }
+
 function logout() {
   return localStorage.removeItem('token')
 }

@@ -14,11 +14,11 @@ class Profile extends React.Component {
 
   componentDidMount() {
     const id = auth.getUserId()
-    const _id = 
+    // const _id = this.state.scoreInfo.user._id
     axios.get(`/api/user/${id}`)
       .then(res => this.setState({ userInfo: res.data }))
-    axios.get(`/api/score/${_id}`)
-      .then(res => this.setState({ scoreInfo: res.data }))
+    // axios.get(`/api/score/${_id}`)
+    //   .then(res => this.setState({ scoreInfo: res.data }))
   }
 
   render() {

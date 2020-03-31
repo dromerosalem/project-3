@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
+// const Score = require('../models/score')
 
 function register(req, res, next) {
   User
