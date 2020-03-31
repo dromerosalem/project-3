@@ -12,7 +12,6 @@ class Comments extends React.Component {
       
     }
   }  
-
   
   componentDidMount(){
     axios.get('/api/comments')
@@ -20,7 +19,6 @@ class Comments extends React.Component {
         this.setState({ comments: res.data })
       })
   }
-
 
   render() {
     console.log(this.state.comments)
@@ -39,8 +37,5 @@ class Comments extends React.Component {
   }
 
 }
-
-
-
 
 export default Comments
