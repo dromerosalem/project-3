@@ -13,11 +13,6 @@ class Register extends React.Component {
         password: '',
         passwordConfirmation: ''
       },
-      score: {
-        gamesPlayed: 0,
-        right: 0,
-        wrong: 0
-      },
       errors: {}
     }
   }
@@ -32,9 +27,7 @@ class Register extends React.Component {
     event.preventDefault()
     axios.post('/api/register',
       this.state.data)
-      .then(() => this.props.history.push('/login'))
-    axios.post('/api/scores',
-      this.state.score)
+      .then(() => this.props.history.push('/first-login'))
   }
 
   render() {
@@ -51,7 +44,7 @@ class Register extends React.Component {
         <label>Confirm Password</label>
         <input
           onChange={(event) => this.handleChange(event)} type="password" name="passwordConfirmation" />
-        <button>Login</button>
+        <button>Register</button>
       </form>
       <h2>Or if you already have an account,
         <Link to={'/login'}>log in!</Link>
