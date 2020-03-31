@@ -89,6 +89,7 @@ class Comments extends React.Component {
     <div className='columns'>
       <div className='commentsForm'>
         <h2>Leave your comments and reviews</h2>
+        <p>🥳🙌🏼🤩Remeber that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
         <NewComment/>
       </div>
       <div className='listOfComments'>
@@ -99,18 +100,16 @@ class Comments extends React.Component {
             <div className="commentBox">
               <h4>{comment.user.username}</h4>
               <p>{comment.comment}</p>
+              {isOwner && <img 
+                onClick={() => this.handeleDelete(comment)}
+                className='bin' src="../assets/bin1.png" alt="bin"/>}
+              
             </div>
-            {isOwner && <button
-              className='deleteButton'
-              onClick={() => this.handeleDelete(comment)}
-            >DELETE
-            </button> }
+
           </div>
         })}
       </div>
     </div>
-    
-    
     </>
   }
 

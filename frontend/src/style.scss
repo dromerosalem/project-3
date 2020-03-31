@@ -30,6 +30,7 @@
 
 .commentInfo{
   margin: 15px 15px;
+  
 }
 
 .submitButton {
@@ -54,10 +55,22 @@
 }
 
 .commentBox{
-  background-color: gray;
-  padding: 10px;
+  background-color: #00B2FF;
+  padding: 20px;
+  padding-left: 30px;
+  border-radius: 25px;
+  border-top-left-radius: 0px;
 }
 
 .deleteButton{
-  background-color: yellow
+  background-color: yellow;
+  margin-left: 275px;
+  margin-top: 10px
+}
+
+.bin{
+  height: 50px;
+  width: auto;
+  margin-left: 290px;
+  margin-bottom: -30px;
 }
