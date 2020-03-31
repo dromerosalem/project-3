@@ -29,11 +29,12 @@ class MultipleChoice extends React.Component {
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
-      localStorage.setItem('score', rightAnswers)
+      localStorage.setItem('right', rightAnswers)
       totalAnswered = rightAnswers + wrongAnswers
     } else {
       event.target.style.backgroundColor = 'red'
       wrongAnswers++
+      localStorage.setItem('wrong', wrongAnswers)
       totalAnswered = rightAnswers + wrongAnswers
       if (this.AnswerA.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
         this.AnswerA.style.backgroundColor = 'green'

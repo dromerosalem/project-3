@@ -62,7 +62,6 @@ class Comments extends React.Component {
       
     }
   }  
-
   
   componentDidMount(){
     axios.get('/api/comments')
@@ -116,8 +115,5 @@ class Comments extends React.Component {
   }
 
 }
-
-
-
 
 export default Comments
