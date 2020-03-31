@@ -5,12 +5,15 @@ import auth from '../lib/auth'
 const CommentForm = ( { handleSubmit, handleChange } ) => {
   
   return <form
+    className='formForComments'
     onSubmit={handleSubmit}>
-    <input 
+    <textarea 
+      className='inputComment'
       onChange={handleChange}
       type="text"
-    />
-    <button>Submit</button>
+    >
+    </textarea>
+    <button className='submitButton'>Submit</button>
   </form>
   
 }
@@ -84,23 +87,28 @@ class Comments extends React.Component {
     console.log(this.state.comments)
     
     return <>
-    <div className='commentsForm'>
-      <h2>Here you can leave your comments and reviews</h2>
-      <NewComment/>
-    </div>
-    <div className='listOfComments'>
-      {this.state.comments.map((comment, i) => {
-        const isOwner = this.isOwner(comment)
-        console.log(comment) 
-        return <div key={i}>
-          <h3>{comment.user.username}</h3>
-          <p>{comment.comment}</p>
-          {isOwner && <button
-            onClick={() => this.handeleDelete(comment)}
-          >DELETE
-          </button> }
-        </div>     
-      })}
+    <div className='columns'>
+      <div className='commentsForm'>
+        <h2>Leave your comments and reviews</h2>
+        <NewComment/>
+      </div>
+      <div className='listOfComments'>
+        {this.state.comments.map((comment, i) => {
+          const isOwner = this.isOwner(comment)
+          console.log(comment) 
+          return <div className='commentInfo' key={i}>
+            <div className="commentBox">
+              <h4>{comment.user.username}</h4>
+              <p>{comment.comment}</p>
+            </div>
+            {isOwner && <button
+              className='deleteButton'
+              onClick={() => this.handeleDelete(comment)}
+            >DELETE
+            </button> }
+          </div>
+        })}
+      </div>
     </div>
     
     
