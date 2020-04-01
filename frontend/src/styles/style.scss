@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+//=========================================================COMMENTS CSS START===========================================================================
+.listOfComments {
+  margin: 0 0 50px 0;
+  list-style: none;
+  .commentInfo{
+    margin: 15px 15px;
+    .commentBox{
+      background-color: #00B2FF;
+      padding: 20px;
+      padding-left: 30px;
+      border-radius: 25px;
+      border-top-left-radius: 0px;
+      .binContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 100%;
+        width: 100%;
+        .bin{
+          height: 50px;
+          size: 10%;
+          width: auto;
+          margin-bottom: -10%;
+        }
+      }
+    }
+  }
+}
+
+.formForComments{
+  display: flex;
+  flex-direction: column;
+  .inputComment{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
+  .submitButton {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 5px;
+  }
+  
+  .submmitButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+  }
+}
+
+
+@media only screen and (min-width: 769px){
+  .columns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 10%;
+  
+  }
+  .listOfComments{
+    margin-top: 4%;
+    margin-right: 20%;
+    width: 100%;
+    margin-left: 10%;
+    height: 500px;
+    overflow: scroll;
+   
+    .commentInfo{
+      width: 90%;
+      .commentBox{
+        margin-top: 10%;
+      }
+    }
+  }
+
+  
+  .commentsHeader{
+    height: 200px;
+    width: auto;
+    text-align: center;
+    background-color: powderblue;
+    padding-top: 5%;
+  }
+}
+
+
+
+
+
+//==========================================================COMMENTS CSS ENDS HERE=====================================================================
+
+
+
+
