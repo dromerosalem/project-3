@@ -73,26 +73,45 @@ class MultipleChoice extends React.Component {
     const randomIndex = Math.floor(Math.random() * 4)
     const arrayOfAnswers = [results.map((e) => (e.incorrect_answers[0])), results.map((e) => (e.incorrect_answers[1])), results.map((e) => (e.incorrect_answers[2]))]
     arrayOfAnswers.insert(randomIndex, results.map((e) => (e.correct_answer)))
-    const question = results.map((e) => (e.question))[0]
+    let question = results.map((e) => (e.question))[0]
+    let optionA = arrayOfAnswers[0][0]
+    let optionB = arrayOfAnswers[1][0]
+    let optionC = arrayOfAnswers[2][0]
+    let optionD = arrayOfAnswers[3][0]
+    if (question !== undefined) {
+      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+    }
+    if (optionA !== undefined) {
+      optionA = optionA.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+    }
+    if (optionB !== undefined) {
+      optionB = optionB.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+    }
+    if (optionC !== undefined) {
+      optionC = optionC.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+    }
+    if (optionD !== undefined) {
+      optionD = optionD.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+    }
     return <>
       <h2>Category: {results.map((e) => (e.category))}</h2>
       <div>Question: {question}</div>
       <div>A.<button ref={button => {
         this.AnswerA = button
       }}
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{optionA}</button></div>
       <div>B.<button ref={button => {
         this.AnswerB = button
       }}
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{optionB}</button></div>
       <div>C.<button ref={button => {
         this.AnswerC = button
       }}
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[2]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{optionC}</button></div>
       <div>D.<button ref={button => {
         this.AnswerD = button
       }}
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[3]}</button></div>
+      onClick={() => this.handlePlayerClick(event)}>{optionD}</button></div>
     </>
   }
 }

@@ -19,8 +19,9 @@ class NavBar extends React.Component {
           {isLoggedIn && <li onClick={() => this.handleLogout()}>
             <Link>Logout</Link></li>}
           {isLoggedIn && <li><Link to="/quizzes">Quizzes</Link></li>}
-          {isLoggedIn && <li><Link to="/profile">Profile</Link></li>}
-          {isLoggedIn && <li><Link to="/comment">Comment</Link></li>}
+          {isLoggedIn && <li><Link to="/profile">My Profile</Link></li>}
+          {isLoggedIn && <li><Link to="/leader-board">Leaderboard</Link></li>}
+          {isLoggedIn && <li><Link to="/comment">Comments</Link></li>}
         </ul>
       </nav>
     </div>

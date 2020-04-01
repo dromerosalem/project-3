@@ -98,7 +98,7 @@ class Comments extends React.Component {
               <p>{comment.comment}</p>
               {isOwner && <img 
                 onClick={() => this.handeleDelete(comment)}
-                className='bin' src="../assets/bin1.png" alt="bin"/>}
+                className='bin' src="../styles/images/bin1.png" alt="bin"/>}
               
             </div>
 
