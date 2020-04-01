@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import './style.scss'
+import './styles/style.scss'
+import './styles/remove.css'
 
 import Login from './components/Login'
 import Register from './components/Register'

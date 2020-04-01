@@ -31,8 +31,8 @@ class Register extends React.Component {
   }
 
   render() {
-    return <>
-      <h1>Welcome to the game etc...</h1>
+    return <div className="flex-container">
+      <h1>The Trivia game</h1>
       <h2>Register</h2>
       <form onSubmit={(event) => this.handleSubmit(event)}>
         <label>Email</label>
@@ -46,10 +46,10 @@ class Register extends React.Component {
           onChange={(event) => this.handleChange(event)} type="password" name="passwordConfirmation" />
         <button>Register</button>
       </form>
-      <h2>Or if you already have an account,
-        <Link to={'/login'}>log in!</Link>
-      </h2>
-    </>
+      <h4>Already registered? Click   
+        <Link to={'/login'}> here </Link> to login.
+      </h4>
+    </div>
   }
 }
 

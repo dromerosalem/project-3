@@ -16,11 +16,12 @@ class NavBar extends React.Component {
         <ul>
           {!isLoggedIn && <li><Link to="/register">Register</Link></li>}
           {!isLoggedIn && <li><Link to="/login">Login</Link></li>}
-          {isLoggedIn && <li onClick={() => this.handleLogout()}>
-            <Link>Logout</Link></li>}
           {isLoggedIn && <li><Link to="/quizzes">Quizzes</Link></li>}
           {isLoggedIn && <li><Link to="/profile">Profile</Link></li>}
-          {isLoggedIn && <li><Link to="/comment">Comment</Link></li>}
+          {isLoggedIn && <li><Link to="/comment">Comments</Link></li>}
+          {isLoggedIn && <li><Link to="/leader-board">Ranking</Link></li>}
+          {isLoggedIn && <li onClick={() => this.handleLogout()}>
+            <Link className="logout" >Logout</Link></li>}
         </ul>
       </nav>
     </div>

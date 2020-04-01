@@ -32,7 +32,7 @@ class Login extends React.Component {
   }
 
   render() {
-    return <>
+    return <div className="flex-container">
       <h1>Login</h1>
       <form onSubmit={(event) => this.handleSubmit(event)}>
         <label>Email</label>
@@ -41,7 +41,7 @@ class Login extends React.Component {
         <input onChange={(event) => this.handleChange(event)} type="password" name="password" />
         <button>Login</button>
       </form>
-    </>
+    </div>
   }
 }
 

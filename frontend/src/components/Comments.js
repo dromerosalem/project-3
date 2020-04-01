@@ -88,7 +88,7 @@ class Comments extends React.Component {
         <p>🥳🙌🏼🤩Remeber that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
         <NewComment/>
       </div>
-      <div className='listOfComments'>
+      <div className='listOfComments'> 
         {this.state.comments.map((comment, i) => {
           const isOwner = this.isOwner(comment)
           console.log(comment) 
@@ -98,7 +98,7 @@ class Comments extends React.Component {
               <p>{comment.comment}</p>
               {isOwner && <img 
                 onClick={() => this.handeleDelete(comment)}
-                className='bin' src="../assets/bin1.png" alt="bin"/>}
+                className='bin' src="./styles/images/bin1.png" alt="bin"/>}
               
             </div>
 

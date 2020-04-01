@@ -19,13 +19,15 @@ class LeaderBoard extends React.Component {
     if (!this.state.users) return null
     const arrayOfUsers = this.state.users
     arrayOfUsers.sort((a, b) => (a.score.right < b.score.right) ? 1 : -1)
-    return <>
-      {arrayOfUsers.map((user, i) => {
-        return <div key={i}>
-          {user.username}: {user.score.right}
-        </div>
-      })}
-    </>
+    return <div className="container">
+      <ol>
+        {arrayOfUsers.map((user, i) => {
+          return <li key={i}>
+            {user.username}: {user.score.right}
+          </li>
+        })}
+      </ol>
+    </div>
   }
 }
 
