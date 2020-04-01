@@ -239,8 +239,17 @@
           margin-bottom: -10%;
         }
       }
+      .userNameComments{
+        font-weight: bold;
+        margin-bottom: 3%;
+      }
     }
   }
+  .titleComments{
+    font-weight: bold;
+    margin-top: 5%;
+  }
+
 }
 .formForComments{
   display: flex;
@@ -276,12 +285,47 @@
     box-shadow: 0 5px #666;
   }
 }
+
+.commentsHeader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  height: 50px;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.hintForEmoticons{
+  display: none;
+}
+
+.titleForm{
+  font-weight: bold;
+  margin-top: 1%;
+}
+
+
 @media only screen and (min-width: 769px){
   .columns{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-left: 10%;
+    .titleForm{
+      font-weight: bold;
+      font-size: x-large;
+      margin: 10px 0 10px 0;
+    }
+  
+    .titleComments{
+      font-weight: bold;
+      font-size: x-large;
+      margin-top: 5%;
+      
+      
+    }
   }
   .listOfComments{
     margin-top: 4%;
@@ -294,15 +338,27 @@
       width: 90%;
       .commentBox{
         margin-top: 10%;
+        .userNameComments{
+          font-weight: bold;
+          margin-bottom: 3%;
+        }
       }
     }
   }
   .commentsHeader{
-    height: 200px;
+    height: 150px;
     width: auto;
     text-align: center;
-    background-color: powderblue;
-    padding-top: 5%;
+    background-color: black;
+    color: whitesmoke;
+    font-size: xx-large;
+    font-weight: bold;
+    
   }
+
+  .hintForEmoticons{
+    display: block;
+    margin-bottom: 10%;
+  }  
 }
 //==========================================================COMMENTS CSS ENDS HERE=====================================================================
