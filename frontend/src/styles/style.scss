@@ -2,15 +2,11 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-}
-
 .navbar {
   background-color: orangered;
 
   ul {
-    list-style-type: none;
+    list-style: none;
     text-align: center;
 
     li {
@@ -18,6 +14,7 @@ body {
       display: inline-block;
       margin: 15px;
       font-size: 12px;
+      font-family: 'Baloo Da 2', cursive;
     } 
 
     .logout {
@@ -38,32 +35,44 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  font-family: Arial, Helvetica, sans-serif;
 
   h1 {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
-    margin: 10px;
+    margin: 20px;
+    font-family: 'Bungee Shade', cursive;
+    color: orangered;
   }
 
   h2 {
     font-size: 20px;
     margin: 5px;
+    text-align: center;
+    font-family: 'Baloo Da 2', cursive;
   }
 
   h3 {
     font-size: 20px;
     margin: 10px;
     text-align: center;
+    font-family: 'Baloo Da 2', cursive;
   }
 
   h4 {
     font-size: 14px;
+    font-family: 'Baloo Da 2', cursive;
 
     a {
       text-decoration: none;
       color: orangered
     }
+  }
+
+  p {
+    font-size: 18px;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Baloo Da 2', cursive;
   }
 
   form {
@@ -74,6 +83,7 @@ body {
     border-radius: 2px;
     margin: 15px;
     padding: 40px;
+    font-family: 'Baloo Da 2', cursive;
 
     label {
       margin-bottom: 10px
@@ -83,7 +93,8 @@ body {
       margin-bottom: 30px;
       padding: 7px 5px;
       border: 1px solid grey;
-      border-radius: 5px
+      border-radius: 5px;
+      font-family: 'Baloo Da 2', cursive;
     }
 
     button {
@@ -91,31 +102,37 @@ body {
       padding: 10px;
       border-radius: 5px;
       background-color: orangered;
-      color: white
+      color: white;
+      font-family: 'Baloo Da 2', cursive;
     }
   }
 
   .choice-title {
     margin-top: 20px;
+    font-family: 'Baloo Da 2', cursive;
   }
 
   .quizz-choices {
     margin: 40px;
+    font-family: 'Baloo Da 2', cursive;
 
-    button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      background-color: orangered;
-      margin: 15px 0; 
+    a {
+      color: white;
+      text-decoration: none;
       
-      a {
+      button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: orangered;
+        margin: 15px 0; 
         color: white;
-        text-decoration: none;
+        font-family: 'Baloo Da 2', cursive;
       }
     }
   }
 
+  // wait for git
   .quizz {
     display: flex;
     flex-direction: column;
@@ -140,6 +157,61 @@ body {
       color: white;
     }
   }
+
+  .score {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border: 1px solid grey;
+    border-radius: 2px;
+    margin: 15px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+
+    .score-title {
+      margin: 20px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: orangered;
+      margin: 10px 0; 
+      color: white;
+      font-family: 'Baloo Da 2', cursive;
+    }
+  }
+
+  .profile {
+    width: 80%;
+    border: 1px solid grey;
+    border-radius: 2px;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .ranking-list {
+    width: 80%;
+    border: 1px solid grey;
+    border-radius: 2px;
+    margin: 15px;
+    padding: 20px;
+ 
+
+    ol {
+      list-style-type: decimal;
+
+      li {
+        margin: 10px;
+        margin-left: 35%;
+        font-family: 'Baloo Da 2', cursive;
+      }
+    }
+  }
+
 }
 
 //=========================================================COMMENTS CSS START===========================================================================

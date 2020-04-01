@@ -23,11 +23,13 @@ class Profile extends React.Component {
     if (!this.state.user) return null
     const { username, score } = this.state.user
     const percentage = score.right / (score.right + score.wrong) * 100
-    return <div>
-      <h2>Username: {username}</h2>
-      <p>Right answers: {score.right}</p>
-      <p>Wrong answers: {score.wrong}</p>
-      <p>Percentage: {percentage}%</p>
+    return <div className="flex-container">
+      <h1>{username}</h1>
+      <div className="profile">
+        <p>Correct answers: {score.right}</p>
+        <p>Incorrect answers: {score.wrong}</p>
+        <p>Percentage: {percentage}%</p>
+      </div>
     </div>
   }
 }
