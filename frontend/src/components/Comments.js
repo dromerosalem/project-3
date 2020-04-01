@@ -13,7 +13,7 @@ const CommentForm = ( { handleSubmit, handleChange } ) => {
       type="text"
     >
     </textarea>
-    <button className='submitButton'>Submit</button>
+    <button className='submitButton'>Comment ⌨️</button>
   </form>
   
 }
@@ -63,7 +63,7 @@ class Comments extends React.Component {
   componentDidMount(){
     axios.get('/api/comments')
       .then(res => {
-        this.setState({ comments: res.data })
+        this.setState({ comments: res.data.reverse() })
       })
   }
 
@@ -82,13 +82,17 @@ class Comments extends React.Component {
     console.log(this.state.comments)
     
     return <>
+    <div className='commentsHeader'>
+      <h1>Leave your comments and reviews</h1>
+    </div>
     <div className='columns'>
       <div className='commentsForm'>
-        <h2>Leave your comments and reviews</h2>
+        <h2 className=''>Say somehting!</h2>
         <p>🥳🙌🏼🤩Remeber that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
         <NewComment/>
       </div>
-      <div className='listOfComments'> 
+      <h2>Comments</h2>
+      <div className='listOfComments'>
         {this.state.comments.map((comment, i) => {
           const isOwner = this.isOwner(comment)
           console.log(comment) 
@@ -96,12 +100,10 @@ class Comments extends React.Component {
             <div className="commentBox">
               <h4>{comment.user.username}</h4>
               <p>{comment.comment}</p>
-              {isOwner && <img 
+              {isOwner && <figure className='binContainer'><img 
                 onClick={() => this.handeleDelete(comment)}
-                className='bin' src="./styles/images/bin1.png" alt="bin"/>}
-              
+                className='bin' src="../styles/images/bin1.png" alt="bin"/></figure>}
             </div>
-
           </div>
         })}
       </div>
