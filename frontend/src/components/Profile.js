@@ -27,7 +27,7 @@ class Profile extends React.Component {
       <h2>Username: {username}</h2>
       <p>Right answers: {score.right}</p>
       <p>Wrong answers: {score.wrong}</p>
-      <p>Percentage: {percentage}%</p>
+      <p>Percentage: {parseInt(percentage)}%</p>
     </div>
   }
 }

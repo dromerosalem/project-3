@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Spinner from './Spinner'
 
 Array.prototype.insert = function (index, item) {
   this.splice(index, 0, item)
@@ -59,16 +60,22 @@ class TrueOrFlase extends React.Component {
   }
 
   render() {
+    if (!this.state.wholeQuestion) return <Spinner />
+    console.log(this.state.wholeQuestion)
     const randomIndex = Math.floor(Math.random() * 2)
     const arrayOfAnswers = [this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[0]))]
     arrayOfAnswers.insert(randomIndex, this.state.wholeQuestion.results.map((e) => (e.correct_answer)))
+    let category = this.state.wholeQuestion.results.map((e) => (e.category))[0]
     let question = this.state.wholeQuestion.results.map((e) => (e.question))[0]
+    if (category !== undefined) {
+      category = category.replace(/Entertainment:/g, '').replace(/Science:/g, '')
+    }
     if (question !== undefined) {
-      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'')
+      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"')
     }
     return <>
-      <h2>Category: {this.state.wholeQuestion.results.map((e) => (e.category))}</h2>
-      <div>Question: {question}</div>
+      <h2>Category: {category}</h2>
+      <div>Question {totalAnswered + 1}: {question}</div>
       <div>A.<button ref={button => {
         this.AnswerA = button
       }} 
