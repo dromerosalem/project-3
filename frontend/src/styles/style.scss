@@ -218,6 +218,7 @@
 .listOfComments {
   margin: 0 0 50px 0;
   list-style: none;
+  font-family: 'Baloo Da 2', cursive;
   .commentInfo{
     margin: 15px 15px;
     .commentBox{
@@ -248,6 +249,7 @@
   .titleComments{
     font-weight: bold;
     margin-top: 5%;
+    font-family: 'Baloo Da 2', cursive;
   }
 
 }
@@ -274,11 +276,12 @@
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: orangered;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin-top: 5px;
+    font-family: 'Baloo Da 2', cursive;
   }
   .submmitButton:active {
     background-color: #3e8e41;
@@ -293,17 +296,20 @@
   text-align: center;
   font-weight: bold;
   height: 50px;
-  background-color: black;
-  color: whitesmoke;
+  // background-color: black;
+  color: orangered;
+  font-family: 'Bungee Shade', cursive;
 }
 
 .hintForEmoticons{
   display: none;
+  font-family: 'Baloo Da 2', cursive;
 }
 
 .titleForm{
   font-weight: bold;
   margin-top: 1%;
+  font-family: 'Baloo Da 2', cursive;
 }
 
 
@@ -349,8 +355,8 @@
     height: 150px;
     width: auto;
     text-align: center;
-    background-color: black;
-    color: whitesmoke;
+    // background-color: black;
+    color: orangered;
     font-size: xx-large;
     font-weight: bold;
     

@@ -46,7 +46,6 @@ class TrueOrFlase extends React.Component {
     
     if (totalAnswered === 10) {
       setTimeout(() => {
-        alert('Game finished!')
         this.props.history.push('/display-score')
       }, 400)
     } else {
