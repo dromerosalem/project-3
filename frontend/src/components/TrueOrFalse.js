@@ -46,6 +46,9 @@ class TrueOrFlase extends React.Component {
     if (totalAnswered === 10) {
       setTimeout(() => {
         this.props.history.push('/display-score')
+        rightAnswers = 0
+        wrongAnswers = 0
+        totalAnswered = 0
       }, 400)
     } else {
       axios.get('https://opentdb.com/api.php?amount=1&type=boolean')
@@ -67,7 +70,7 @@ class TrueOrFlase extends React.Component {
       category = category.replace(/Entertainment:/g, '').replace(/Science:/g, '')
     }
     if (question !== undefined) {
-      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö').replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
+      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö').replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"').replace(/&iacute;/g, 'í').replace(/&oacute;/g, 'ó').replace(/&Delta;/g, 'Δ')
     }
     if (!this.state.wholeQuestion.results[0]) return <Spinner /> 
     return <div className="flex-container">

@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const scoreSchema = new mongoose.Schema({
-  right: { type: Number },
-  wrong: { type: Number }
+  right: { type: Number, default: 0 },
+  wrong: { type: Number, default: 0 }
 })
 
 const schema = new mongoose.Schema({
