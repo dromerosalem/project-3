@@ -42,7 +42,7 @@ class MultipleChoice extends React.Component {
       }
     }
     if (totalAnswered === 10) {
-      setTimeout(() => { 
+      setTimeout(() => {
         this.props.history.push('/display-score')
         rightAnswers = 0
         wrongAnswers = 0
@@ -60,13 +60,11 @@ class MultipleChoice extends React.Component {
     }
   }
   render() {
-    if (!this.state.wholeQuestion.results) return <Spinner />
     const { results } = this.state.wholeQuestion
     const randomIndex = Math.floor(Math.random() * 4)
     const arrayOfAnswers = [results.map((e) => (e.incorrect_answers[0])), results.map((e) => (e.incorrect_answers[1])), results.map((e) => (e.incorrect_answers[2]))]
     arrayOfAnswers.insert(randomIndex, results.map((e) => (e.correct_answer)))
     let category = results.map((e) => (e.category))[0]
-    console.log(category)
     let question = results.map((e) => (e.question))[0]
     let optionA = arrayOfAnswers[0][0]
     let optionB = arrayOfAnswers[1][0]
@@ -90,6 +88,7 @@ class MultipleChoice extends React.Component {
     if (optionD !== undefined) {
       optionD = optionD.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö').replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
     }
+    if (!this.state.wholeQuestion.results[0]) return <Spinner /> 
     return <div className="flex-container">
       <h2>Category: {category}</h2>
       <div className="quizz">
@@ -97,19 +96,19 @@ class MultipleChoice extends React.Component {
         <button ref={button => {
           this.AnswerA = button
         }}
-        onClick={() => this.handlePlayerClick(event)}>{optionA}</button>
+          onClick={() => this.handlePlayerClick(event)}>{optionA}</button>
         <button ref={button => {
           this.AnswerB = button
         }}
-        onClick={() => this.handlePlayerClick(event)}>{optionB}</button>
+          onClick={() => this.handlePlayerClick(event)}>{optionB}</button>
         <button ref={button => {
           this.AnswerC = button
         }}
-        onClick={() => this.handlePlayerClick(event)}>{optionC}</button>
+          onClick={() => this.handlePlayerClick(event)}>{optionC}</button>
         <button ref={button => {
           this.AnswerD = button
         }}
-        onClick={() => this.handlePlayerClick(event)}>{optionD}</button>
+          onClick={() => this.handlePlayerClick(event)}>{optionD}</button>
       </div>
     </div>
   }

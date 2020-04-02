@@ -5,13 +5,15 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 const Spinner = () => {
 
   return (
-    <div className="Loading">
-      <Loader
-        type="ThreeDots"
-        color="orangered"
-        height={100}
-        width={100}
-      />
+    <div className="flex-container">
+      <div className="Loading">
+        <Loader
+          type="ThreeDots"
+          color="orangered"
+          height={100}
+          width={100}
+        />
+      </div>
     </div>
   )
 }

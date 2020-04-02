@@ -58,8 +58,6 @@ class TrueOrFlase extends React.Component {
   }
 
   render() {
-    if (!this.state.wholeQuestion) return <Spinner />
-    console.log(this.state.wholeQuestion)
     const randomIndex = Math.floor(Math.random() * 2)
     const arrayOfAnswers = [this.state.wholeQuestion.results.map((e) => (e.incorrect_answers[0]))]
     arrayOfAnswers.insert(randomIndex, this.state.wholeQuestion.results.map((e) => (e.correct_answer)))
@@ -71,6 +69,7 @@ class TrueOrFlase extends React.Component {
     if (question !== undefined) {
       question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö').replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
     }
+    if (!this.state.wholeQuestion.results[0]) return <Spinner /> 
     return <div className="flex-container">
       <h2>Category: {category}</h2>
       <div className="quizz">

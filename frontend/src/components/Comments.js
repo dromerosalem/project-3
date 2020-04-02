@@ -88,7 +88,7 @@ class Comments extends React.Component {
     <div className='columns'>
       <div className='commentsForm'>
         <h2 className=''>Say somehting!</h2>
-        <p>🥳🙌🏼🤩Remeber that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
+        <p>🥳🙌🏼🤩Remember that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
         <NewComment/>
       </div>
       <h2>Comments</h2>
