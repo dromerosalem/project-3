@@ -245,11 +245,7 @@
       }
     }
   }
-  .titleComments{
-    font-weight: bold;
-    margin-top: 5%;
-    font-family: 'Baloo Da 2', cursive;
-  }
+  
 
 }
 .formForComments{
@@ -310,7 +306,11 @@
   margin-top: 1%;
   font-family: 'Baloo Da 2', cursive;
 }
-
+.titleComments{
+  font-weight: bold;
+  margin-top: 5%;
+  font-family: 'Baloo Da 2', cursive;
+}
 
 @media only screen and (min-width: 769px){
   .columns{
