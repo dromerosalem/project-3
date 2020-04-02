@@ -132,7 +132,6 @@
     }
   }
 
-  // wait for git
   .quizz {
     display: flex;
     flex-direction: column;
@@ -146,15 +145,15 @@
       text-align: center;
       font-weight: bold;
       margin-bottom: 10px;
+      font-family: 'Baloo Da 2', cursive;
     }
 
     button {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
-      background-color: orangered;
       margin: 10px 0; 
-      color: white;
+      font-family: 'Baloo Da 2', cursive;
     }
   }
 
