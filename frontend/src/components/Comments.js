@@ -83,17 +83,16 @@ class Comments extends React.Component {
     
     return <>
     <div className='commentsHeader'>
-      <h1 className='tittleHeader'>Leave your comments and reviews</h1>
+      <h1>Leave your comments and reviews</h1>
     </div>
     <div className='columns'>
       <div className='commentsForm'>
-        <h2 className='titleForm'>Say something!</h2>
-        <p className='hintForEmoticons'>🥳🙌🏼🤩Remember that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
+        <h2 className='titleForm'>Say somehting!</h2>
+        <p className='hintForEmoticons'>🥳🙌🏼🤩Remeber that you can write emoticons by doing 'control' + 'command' + 'spacebar'. 😜😏😎</p>
         <NewComment/>
       </div>
-      
+      <h2 className='titleComments'>Comments</h2>
       <div className='listOfComments'>
-        <h2 className='titleComments'>Comments</h2>
         {this.state.comments.map((comment, i) => {
           const isOwner = this.isOwner(comment)
           console.log(comment) 
