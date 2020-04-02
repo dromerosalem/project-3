@@ -26,7 +26,6 @@ class TrueOrFlase extends React.Component {
   }
 
   handlePlayerClick(event) {
-    
     if (event.target.innerHTML === this.state.wholeQuestion.results.map((e) => (e.correct_answer))[0]) {
       event.target.style.backgroundColor = 'green'
       rightAnswers++
@@ -43,18 +42,17 @@ class TrueOrFlase extends React.Component {
         this.AnswerB.style.backgroundColor = 'green'
       }
     }
-    
+
     if (totalAnswered === 10) {
       setTimeout(() => {
-        alert('Game finished!')
         this.props.history.push('/display-score')
       }, 400)
     } else {
       axios.get('https://opentdb.com/api.php?amount=1&type=boolean')
         .then(res => this.setState({ wholeQuestion: res.data }))
       setTimeout(() => {
-        this.AnswerA.style.backgroundColor = 'white'
-        this.AnswerB.style.backgroundColor = 'white'
+        this.AnswerA.style.backgroundColor = 'buttonface'
+        this.AnswerB.style.backgroundColor = 'buttonface'
       }, 400)
     }
   }
@@ -71,21 +69,24 @@ class TrueOrFlase extends React.Component {
       category = category.replace(/Entertainment:/g, '').replace(/Science:/g, '')
     }
     if (question !== undefined) {
-      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"')
+      question = question.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö')
     }
-    return <>
+    return <div className="flex-container">
       <h2>Category: {category}</h2>
-      <div>Question {totalAnswered + 1}: {question}</div>
-      <div>A.<button ref={button => {
-        this.AnswerA = button
-      }} 
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button></div>
-      <div>B.<button ref={button => {
-        this.AnswerB = button
-      }} 
-      onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button></div>
-    </>
+      <div className="quizz">
+        <div className="question">Question {totalAnswered + 1}: {question}</div>
+        <button ref={button => {
+          this.AnswerA = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[0]}</button>
+        <button ref={button => {
+          this.AnswerB = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{arrayOfAnswers[1]}</button>
+      </div>
+    </div>
   }
 }
 
 export default TrueOrFlase
+
