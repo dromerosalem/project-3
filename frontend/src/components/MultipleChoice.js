@@ -42,8 +42,7 @@ class MultipleChoice extends React.Component {
       }
     }
     if (totalAnswered === 10) {
-      axios.put()
-      setTimeout(() => {
+      setTimeout(() => { 
         this.props.history.push('/display-score')
         rightAnswers = 0
         wrongAnswers = 0
@@ -53,10 +52,10 @@ class MultipleChoice extends React.Component {
       axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
         .then(res => this.setState({ wholeQuestion: res.data }))
       setTimeout(() => {
-        this.AnswerA.style.backgroundColor = 'white'
-        this.AnswerB.style.backgroundColor = 'white'
-        this.AnswerC.style.backgroundColor = 'white'
-        this.AnswerD.style.backgroundColor = 'white'
+        this.AnswerA.style.backgroundColor = 'buttonface'
+        this.AnswerB.style.backgroundColor = 'buttonface'
+        this.AnswerC.style.backgroundColor = 'buttonface'
+        this.AnswerD.style.backgroundColor = 'buttonface'
       }, 400)
     }
   }
@@ -91,26 +90,28 @@ class MultipleChoice extends React.Component {
     if (optionD !== undefined) {
       optionD = optionD.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&minus;/g, '-').replace(/&ograve;/g, 'ò').replace(/&deg;/g, '°').replace(/&epsilon;/g, 'ε').replace(/&Phi;/g, 'Φ').replace(/&rsquo;/g, '\'').replace(/&amp;/g, '&').replace(/&eacute;/g, 'é').replace(/&atilde;/g, 'ã').replace(/&prime;/g, '\'').replace(/&Prime;/g, '"').replace(/&uuml;/g, 'ü').replace(/&ouml;/g, 'ö').replace(/&Ouml;/g, 'Ö')
     }
-    return <>
+    return <div className="flex-container">
       <h2>Category: {category}</h2>
-      <div>Question {totalAnswered + 1}: {question}</div>
-      <div>A.<button ref={button => {
-        this.AnswerA = button
-      }}
-        onClick={() => this.handlePlayerClick(event)}>{optionA}</button></div>
-      <div>B.<button ref={button => {
-        this.AnswerB = button
-      }}
-        onClick={() => this.handlePlayerClick(event)}>{optionB}</button></div>
-      <div>C.<button ref={button => {
-        this.AnswerC = button
-      }}
-        onClick={() => this.handlePlayerClick(event)}>{optionC}</button></div>
-      <div>D.<button ref={button => {
-        this.AnswerD = button
-      }}
-        onClick={() => this.handlePlayerClick(event)}>{optionD}</button></div>
-    </>
+      <div className="quizz">
+        <div className="question">Question {totalAnswered + 1}: {question}</div>
+        <button ref={button => {
+          this.AnswerA = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{optionA}</button>
+        <button ref={button => {
+          this.AnswerB = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{optionB}</button>
+        <button ref={button => {
+          this.AnswerC = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{optionC}</button>
+        <button ref={button => {
+          this.AnswerD = button
+        }}
+        onClick={() => this.handlePlayerClick(event)}>{optionD}</button>
+      </div>
+    </div>
   }
 }
 export default MultipleChoice
