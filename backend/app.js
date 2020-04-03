@@ -4,8 +4,13 @@ const bodyParser = require('body-parser')
 const router = require('./router')
 const mongoose = require('mongoose')
 
+const path = require('path')
+const dist = path.join(__dirname, 'dist')
+const { port, dbURI } = require('./config/environment')
+
+
 mongoose.connect(
-  'mongodb://localhost/trivia-db',
+  dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) console.log(err)
@@ -22,6 +27,12 @@ expressServer.use((req, res, next) => {
   next()
 })
 
+
 expressServer.use('/api', router)
 
-expressServer.listen(8000)
+expressServer.use('/', express.static(dist))
+expressServer.get('*', function(req, res) {
+  res.sendFile(path.join(dist, 'index.html'))
+})
+
+expressServer.listen(port)
