@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import auth from '../lib/auth'
+import binimage from '../styles/images/bin1.png'
 
 const CommentForm = ( { handleSubmit, handleChange } ) => {
   
@@ -102,7 +103,7 @@ class Comments extends React.Component {
               <p>{comment.comment}</p>
               {isOwner && <figure className='binContainer'><img 
                 onClick={() => this.handeleDelete(comment)}
-                className='bin' src="../styles/images/bin1.png" alt="bin"/></figure>}
+                className='bin' src={binimage} alt="bin"/></figure>}
             </div>
           </div>
         })}
