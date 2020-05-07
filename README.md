@@ -118,14 +118,6 @@ schema.methods.validatePassword = function validatePassword(password) {
 
 User:
 
- |           	| GET 	| POST 	| PUT 	| 
-  |-----------	|-----	|------	|-----	|--------	|
-  | /register 	|     	|   x  	|     	|        	|
-  | /login    	|     	|   x  	|     	|        	|
-  | /display-score   	|    	|   x  	|  x  	|       	|
-  | /profile   	|  x  	|     	|    	|       	|
-  | /leader-board |  x  	|     	|    	|       	|
-
 - `/register`
 
 From the Register component we are posting to the register endpoint.
@@ -220,9 +212,6 @@ function index (req, res) {
 
 Comment:
 
-|           	| GET 	| POST 	| DELETE 	| 
-  |-----------	|-----	|------	|-----	|--------	|
-  | /comment 	|   x  	|   x  	|   x  	|        	|
   
   - `Comment`
 
