@@ -321,7 +321,7 @@ function secureRoute(req, res, next) {
 
 We decided to do a mobile first approach when bulding the game. It was build using React and contains 11 components.
 
-<img  src=frontend/src/styles/images/quiz.png height=250> <img  src=frontend/src/styles/images/login.png height=250> <img  src=frontend/src/styles/images/multiple-choice.png height=250>
+<img  src=frontend/src/styles/images/quiz.png height=350> <img  src=frontend/src/styles/images/login.png height=350> <img  src=frontend/src/styles/images/multiple-choice.png height=350>
 
 
 
