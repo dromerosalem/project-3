@@ -566,6 +566,14 @@ In the `Comment.js` component we are getting the information from our previous p
 - Overcoming the limits of working remotely from home.
 
 
+## Lessons Learned.
+
+- Being the first full-stack aplication we built is worth to mention that the whole process was a lesson as it self to be more specific we had the chance to understand how the MVC (Model Controller Viwer) works in practic, by building the models and the serializers for later on render it in the components.
+
+- Login and Registration and working with authorization was something I personally found exiting as at the same time challenging and however I understood how the user are logged with their personal tokens and using build in functionallities as `isLoggedIn()` to display specific information when the user is logged in, I would like to deep more into the subject in order to be capable to reproduce the product in a much more smooth manner.
+
+
+
 
 
 
