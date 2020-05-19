@@ -46,11 +46,11 @@ We decided to use both an external API and our own data in the backend.
 
 It was important for us to choose an API with a structure that we could understand well.
 
-We deceided to use a Open Source REST  [API](https://opentdb.com/api_config.php) to fetch our questions and answers for the quiz. 
+We decided to use a Open Source REST  [API](https://opentdb.com/api_config.php) to fetch our questions and answers for the quiz. 
 
 ## The Backend
 
-In the backed we are constructing the controllers and the models as a part of our MVC.
+In the backend we are constructing the controllers and the models as a part of our MVC.
 
 - **Models**
 
@@ -179,7 +179,7 @@ function addToScore(req, res) {
 
 - `/profile`
 
-From the Profile component we are geting from the getUserInfo endpoint.
+From the Profile component we are getting from the getUserInfo endpoint.
 
 ```js
 function getUserInfo(req, res) {
@@ -196,7 +196,7 @@ function getUserInfo(req, res) {
 
 - `/leader-board`
 
-From the LeaderBoard component we are geting from the index endpoint.
+From the LeaderBoard component we are getting from the index endpoint.
 
 ```js
 function index (req, res) {
